@@ -7,6 +7,7 @@
 {% set subject_user_name = host_name.upper() + "$" -%}
 {% set record_id = shared.get("record_id", 1) -%}
 {% set process_id = range(1, 1024) | random -%}
+{% set logon_id = "0x" + module.rand.string.hex(3) -%}
 
 {
     "@timestamp": "{{ timestamp }}{{ tz }}",
@@ -70,11 +71,11 @@
             "LogonProcessName": "User32",
             "LogonType": "2",
             "SubjectDomainName": "{{ domain_name }}",
-            "SubjectLogonId": "0x3e7",
+            "SubjectLogonId": "{{ logon_id }}",
             "SubjectUserName": "{{ subject_user_name }}",
             "SubjectUserSid": "S-1-5-18",
             "TargetDomainName": "{{ domain_name }}",
-            "TargetLogonId": "0x3e7",
+            "TargetLogonId": "{{ logon_id }}",
             "TargetUserName": "{{ target_user_name }}",
             "TargetUserSid": "S-1-5-21-{{ module.rand.string.digits(10) }}-{{ module.rand.string.digits(10) }}-{{ module.rand.string.digits(8) }}-{{ range(1000, 10000) | random }}",
             "TransmittedServices": "-"
