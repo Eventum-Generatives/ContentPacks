@@ -25,13 +25,13 @@
         "version": "8.0.0"
     },
     "event": {
-        "action": "logged-in",
+        "action": "logon-failed",
         "category": [
             "authentication"
         ],
-        "code": "4624",
+        "code": "4625",
         "kind": "event",
-        "outcome": "success",
+        "outcome": "failure",
         "provider": "Microsoft-Windows-Security-Auditing",
         "type": [
             "start"
@@ -65,14 +65,13 @@
         "computer_name": "{{ host_name }}",
         "event_data": {
             "AuthenticationPackageName": "Negotiate",
-            "ImpersonationLevel": "%%1833",
-            "IpAddress": "-",
-            "IpPort": "-",
+            "FailureReason": "%%2313",
             "KeyLength": "0",
             "LmPackageName": "-",
-            "LogonGuid": "{00000000-0000-0000-0000-000000000000}",
             "LogonProcessName": "User32",
             "LogonType": "2",
+            "Status": "0xc000006d",
+            "SubStatus": "0xc0000064",
             "SubjectDomainName": "{{ domain_name }}",
             "SubjectLogonId": "{{ logon_id }}",
             "SubjectUserName": "{{ subject_user_name }}",
@@ -83,17 +82,22 @@
             "TargetUserSid": "{{ target_user_sid }}",
             "TransmittedServices": "-"
         },
-        "event_id": "4624",
+        "event_id": "4625",
         "keywords": [
-            "Audit Success"
+            "Audit Failure"
         ],
         "level": "information",
         "logon": {
+            "failure": {
+                "reason": "Unknown user name or bad password.",
+                "status": "This is either due to a bad username or authentication information",
+                "sub_status": "User logon with misspelled or bad user account"
+            },
             "id": "{{ logon_id }}",
-            "type": "Service"
+            "type": "Interactive"
         },
         "opcode": "Info",
-        "outcome": "success",
+        "outcome": "failure",
         "process": {
             "pid": {{ process_id }},
             "thread": {
