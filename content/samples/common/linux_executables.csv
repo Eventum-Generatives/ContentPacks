@@ -33,6 +33,8 @@
 /usr/bin/gpart
 /usr/bin/gparted
 /usr/bin/gpg
+/usr/bin/grub
+/usr/bin/guake
 /usr/bin/htop
 /usr/bin/ifconfig
 /usr/bin/inkscape
@@ -54,6 +56,7 @@
 /usr/bin/lshw
 /usr/bin/lspci
 /usr/bin/lsusb
+/usr/bin/meld
 /usr/bin/metasploit
 /usr/bin/nautilus
 /usr/bin/netstat
@@ -95,6 +98,3 @@
 /usr/bin/xdg-open
 /usr/bin/xterm
 /usr/bin/yum
-/usr/bin/guake
-/usr/bin/meld
-/usr/bin/grub
